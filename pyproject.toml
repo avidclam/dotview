@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dotview"
+version = "0.0.1"
+description = "Lightweight attribute access for nested dictionaries."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+
+authors = [
+    { name = "Aleksandr Mikhailov", email = "dev@avidclam.com" }
+]
+
+dependencies = []
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.optional-dependencies]
+jsonpath = [
+    "jsonpath_ng"
+]
+
+[project.urls]
+Homepage = "https://github.com/avidclam/dotview"
+Repository = "https://github.com/avidclam/dotview"
+

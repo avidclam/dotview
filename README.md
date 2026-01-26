@@ -15,13 +15,13 @@ missing-key checks. Dotview provides:
 ## Installation
 
 ```bash
-pip install dotview
+pip install "dotview @ git+https://github.com/avidclam/dotview.git"
 ```
 
 Optional JSONPath support:
 
 ```bash
-pip install dotview[jsonpath]
+pip install "dotview[jsonpath] @ git+https://github.com/avidclam/dotview.git"
 ```
 
 ## Quick start

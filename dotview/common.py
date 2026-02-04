@@ -3,13 +3,8 @@ from .config import TRUNCATE_REPR, TRUNCATE_REPR_MIN_LEN, TRUNCATE_REPR_MAX_LEN
 
 def truncate(string, padding :str='...', max_len :int|None=None):
     """Return a truncated string."""
-    padding_length = len(padding)
-    if max_len is None:
-        max_len = padding_length
-    if max_len < padding_length:
-        max_len = padding_length
-    if len(string) > max_len:
-        return f'{string[:max_len - padding_length]}{padding}'
+    if max_len is not None and len(string) > max_len:
+        return f'{string[:max(max_len - len(padding), 0)]}{padding}'[:max_len]
     return string
 
 def truncate_repr(obj, padding: str='...', max_len :int|None=None):

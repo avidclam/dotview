@@ -35,10 +35,10 @@ def test_treeview_value_missing_returns_na():
 
 
 def test_treeview_setitem_creates_nested_mapping():
-    data = {}
+    data = {"a": 1}
     tv = TreeView(data)
-    tv["a", "b"] = 5
-    assert data == {"a": {"b": 5}}
+    tv["b", "c"] = 5
+    assert data == {"a": 1, "b": {"c": 5}}
 
 
 def test_treeview_setitem_replaces_non_mapping_parent():
@@ -55,7 +55,19 @@ def test_treeview_getitem_accepts_scalar_or_sequence():
     assert tv[("a", "b")].root == ("a", "b")
 
 
-def test_treeview_value_setter_on_root_replaces_data():
+def test_treeview_value_setter_on_empty_root_replaces_data():
     tv = TreeView({"a": 1})
     tv.value = {"b": 2}
     assert tv.data == {"b": 2}
+
+
+def test_treeview_value_setter_on_leaf_root_replaces_scalar():
+    tv = TreeView({"a": 1}, "a")
+    tv.value = 5
+    assert tv.data == {"a": 5}
+
+
+def test_treeview_value_setter_on_nonexistent_root_adds_data():
+    tv = TreeView({"a": 1}, ("b", "c"))
+    tv.value = 5
+    assert tv.data == {"a": 1, "b": {"c": 5}}
